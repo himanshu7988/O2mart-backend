@@ -18,9 +18,9 @@ app.disable("x-powered-by");
 
 // ✅ BULLETPROOF CORS - Handles everything
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:5173");
-  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
+  res.header("Access-Control-Allow-Origin", "*");
+  // res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+  // res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
   res.header("Access-Control-Allow-Credentials", "true");
   if (req.method === "OPTIONS") return res.status(200).end();
   next();
@@ -64,12 +64,12 @@ app.get("/", (req, res) => {
 // console.log("MONGODB_URI Laxman:", process.env.MONGODB_URI);
 
 // Serve React build in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../plant/build')));
-  app.get('/**/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../plant/build', 'index.html'));
-  });
-}
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static(path.join(__dirname, '../plant/build')));
+//   app.get('/**/*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../plant/build', 'index.html'));
+//   });
+// }
 
 
 const PORT = process.env.PORT || 5000;
