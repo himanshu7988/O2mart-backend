@@ -57,6 +57,10 @@ app.use("/api/subplants", subPlantsRouter);
 app.use("/api/promoSlider", promoPlant);
 app.use("/api/search", searchRoutes);
 
+app.get("/", (req, res) => {
+  res.send("Welcome to the O2mart API");
+});
+
 // console.log("MONGODB_URI Laxman:", process.env.MONGODB_URI);
 
 // Serve React build in production
@@ -72,3 +76,5 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>
   console.log(`Server running on http://localhost:${PORT}`),
 );
+
+//https://o2mart-backend-nu.vercel.app/
